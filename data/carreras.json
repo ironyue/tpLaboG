@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "grado" : "primero",
+        "universidad" : "unpaz",
+        "materias" : [
+            {
+            "id": 1,
+            "nombre" : "analisis matematico 1",
+            "cuatrimestral": true,
+            "anio": "1ro",
+            "carreraId": 1
+            }
+
+        ]
+    }
+]
