@@ -1,4 +1,5 @@
-const carreras= require("../../data/carreras.json")
+const carreras= require("../../data/carreras.json");
+const { messages } = require("../schemas/materias.schemas");
 const controller={}
 
 
@@ -17,7 +18,7 @@ const getCarreraByID= (req,res) => {
 const postCarrera= (req,res) =>{
     const data= req.body
     let id=1;
-    if(carreras.lenght){
+    if(carreras.length){
         const x= carreras.map(c=> c.id)
         id= Math.max(...x)+1
     }
@@ -27,10 +28,16 @@ const postCarrera= (req,res) =>{
         universidad:data.universidad,
         materias:data.materias})
     res.status(201).json(carreras[carreras.length-1])
+};
+
+const deleteCarreraById= (req,res) => {
+    const id= req.params.id
+    const posic= carreras.findIndex(c => c.id==id)
+    const borrar= carreras.splice(posic,1)
+    res.status(200).json({mensaje: "se borra la carrera: ", objeto: borrar[0]})
 }
 
-
-module.exports= {getAllCarreras, getCarreraByID, postCarrera}
+module.exports= {getAllCarreras, getCarreraByID, postCarrera, deleteCarreraById}
 
 
 
